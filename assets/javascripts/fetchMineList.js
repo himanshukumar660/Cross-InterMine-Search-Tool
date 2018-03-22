@@ -2,7 +2,7 @@
 
 //The following code fetches all the mine list
 var fetchMineList = (function () {
-	var regEndPnt = "http://registry.intermine.org/service/instances";
+	var regEndPnt = "https://registry.intermine.org/service/instances";
 	$.ajax({
 		type: 'get',
 		url: regEndPnt,
