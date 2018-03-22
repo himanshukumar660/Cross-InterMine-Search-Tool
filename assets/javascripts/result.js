@@ -3,12 +3,12 @@ function getJsonFromUrl() {
   var query = location.search.substr(1);
   var result = [];
   var parameters = query.split("&")
-	if(parameters.length==1) //This signifies that the user has made a search to all the mines
+	//This signifies that the user has made a search to all the mines
+	if(parameters.length==0)
 	{
 		//Make an ajax call to get the list of mines
 		$.getJSON("https://registry.intermine.org/service/instances", function(data){
 			if(data.statusCode==200){
-	      var mineList = [];
 	      for(each in data.instances)
 	        result.push([data.instances[each].url,data.instances[each].name]);
 				}
