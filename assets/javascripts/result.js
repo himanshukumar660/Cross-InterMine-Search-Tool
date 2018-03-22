@@ -53,7 +53,7 @@ $.each(mineListUrl, function(index, item) {
 									<td><p style="font-size:18px">' + data.results[ech].type.replace(/([A-Z][a-z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) + '</p></td>\
 								</tr>\
 								<tr style="width:55%">\
-							    <td><p style="max-width:332px">' + all + '</p></td>\
+							    <td><p style="max-width:332px;overflow-wrap: break-word;">' + all + '</p></td>\
 							  </tr>\
 							  <tr style="width:20%">\
 							    <td>\
