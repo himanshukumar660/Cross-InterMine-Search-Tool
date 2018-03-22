@@ -3,16 +3,22 @@ function getJsonFromUrl() {
   var query = location.search.substr(1);
   var result = [];
   var parameters = query.split("&")
+	var sQuery = parameters[0].split("=");
+	result.push(sQuery);
 	//This signifies that the user has made a search to all the mines
-	if(parameters.length==0)
+	if(parameters.length==1)
 	{
-		//Make an ajax call to get the list of mines
-		$.getJSON("https://registry.intermine.org/service/instances", function(data){
+		//Make a synchronous API call to get the list of mines
+		var request = new XMLHttpRequest();
+		request.open("GET", "https://registry.intermine.org/service/instances", false);  // `false` makes the request synchronous
+		request.send(null);
+		if (request.status === 200) {
+			var data = JSON.parse(request.response);
 			if(data.statusCode==200){
-	      for(each in data.instances)
-	        result.push([data.instances[each].url,data.instances[each].name]);
-				}
-			});
+			 for(each in data.instances)
+				 result.push([data.instances[each].url,data.instances[each].name]);
+			 }
+		 }
 	}
 	else{
 		for(i=1;i<parameters.length;i++) {
@@ -26,13 +32,19 @@ function getJsonFromUrl() {
 
 var mineListObj = getJsonFromUrl();
 var i = 0;
-var apiSearchEndPoint = "/service/search?q=" + "" + "&size=10";
+var apiSearchEndPoint = "/service/search?q=" + mineListObj[0][1] + "&size=10";
 var mapUrlName = {};
 var mineListUrl = [];
 for (each in mineListObj){
-	mapUrlName[mineListObj[each][0]] = mineListObj[each][1];
-	mineListUrl.push(mineListObj[each][0]);
+	//each 0 equals to the search term
+	if(each==0)
+		continue;
+	else{
+		mapUrlName[mineListObj[each][0]] = mineListObj[each][1];
+		mineListUrl.push(mineListObj[each][0]);
+	}
 }
+
 $.each(mineListUrl, function(index, item) {
 	$.ajax({
 		type: 'get',
