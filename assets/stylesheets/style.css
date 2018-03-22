@@ -1,0 +1,229 @@
+body {
+  font: 15px "QuickSand", Helvetica, Arial, sans-serif;
+}
+::placeholder{
+  font-weight: 400;
+}
+.sBox{
+  display: block;
+  text-align: center;
+  background-color: unset;
+  margin:125px auto;
+  min-width: 45.6%;
+}
+.sImg{
+  width: 100%;
+  margin: 0px auto;
+  text-align: center;
+}
+#sImg{
+  width: 400px;
+  max-width: 90%;
+  margin:10px;
+  margin-bottom: 20px;
+}
+.sInpt{
+  width: 600px;
+  margin:10px;
+  display: inline-flex;
+  box-shadow: 1px 2px 4px 0 rgba(27,42,53,.25);
+  transition: all 0.1s ease-in-out;
+  border-radius: 3px;
+}
+.sInpt:hover{
+  box-shadow: 1px 3px 6px 0 rgba(27,42,53,.25);
+}
+#sBar{
+  width: 584px;
+  height:44px;
+  outline: 0px;
+  padding: 10px;
+  border: 0.5px solid rgba(27,42,53,.10);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+  font-weight: 500;
+}
+#sBtn{
+  background-color: unset;
+  border-left: none;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto;
+  border: 0.5px solid rgba(27,42,53,.10);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left:none;
+  outline: 0
+}
+#sBtnIcon{
+  font-size: 25px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: gray;
+  transition: all 0.1s ease-in-out;
+}
+#sBtnIcon:hover{
+  color: black;
+  font-weight: 800;
+}
+.sInptBtn{
+  margin-top: 20px;
+}
+#sInptBtn{
+  background-color: rgba(27,42,53,.10);
+  outline:0;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: 800;
+  transition: all 0.1s ease-in-out;
+  color:rgba(27,42,53,.80);
+  font-size: 15px;
+}
+#sInptBtn:hover{
+  border:1px solid rgba(27,42,53,.10);
+  color: black;
+}
+.sInfo{
+  margin-top:20px;
+  display: inline-block;
+  line-height: 28px;
+  padding: 0 20px;
+  max-width: 750px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+#sInfo{
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: small;
+  display: inline-block;
+}
+#choices {
+  background-color: #ffffff21;
+  border-radius: 1rem;
+  margin: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color:grey;
+  outline: none!important;
+  transition: all 0.1s ease-in-out;
+}
+.choiceLst{
+  padding-left:0px;
+  display:inline-block;
+  text-align:center;
+}
+#choices:hover{
+  background-color: lightgrey;
+}
+.clicked {
+  background-color:#bdd73c!important;
+  color: black!important;
+  font-weight: 800;
+}
+.chbtn{
+  outline: none!important;
+  padding: 0px!important;
+}
+.chbtn.active{
+  box-shadow: none;
+}
+table tr {
+  display: table-cell;
+  padding: 10px;
+  margin:10px;
+}
+
+#sResultBox{
+  width:60%;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 1px solid #d1d5da;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  transform: translateZ(0);
+}
+#mineNameHeader{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display:inline-block;
+  width:100%;
+  background-color:#d4e8ff
+}
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #d1d5da;
+  font-size: 20px;
+  height: 20px;
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+.star-ratings-css-top {
+    color: #42b72a;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.star-ratings-css-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .sBox{
+        width: 170%;
+        margin-top: 250px;
+    }
+    #sImg{
+      margin-bottom: 10px;
+    }
+    .sInpt{
+      height: 70px;
+      border-radius: 5px;
+      box-shadow: none;
+      font-weight: 800;
+      font-size: 25px;
+    }
+    .sInput::placeholder{
+      font-weight: 400;
+      color: rgba(27,42,53,.50);
+    }
+    #sBtnIcon{
+      font-size: 25px;
+    }
+    #sInptBtn{
+      font-size: 25px;
+      height: 70px;
+    }
+    #sBar, #sBtn{
+      height: 70px;
+      border: 0.5px solid lightgray;
+    }
+    #sBar{
+      border-right: none;
+    }
+    #sBtn{
+      border-left: none;
+    }
+    .sInpt:hover{
+      box-shadow: none;
+    }
+    #sInfo{
+      font-size: 17px;
+    }
+    #sResultBox{
+      width: 100%;
+    }
+}
