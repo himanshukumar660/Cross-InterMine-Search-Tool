@@ -2,14 +2,27 @@
 function getJsonFromUrl() {
   var query = location.search.substr(1);
   var result = [];
-  query.split("&").forEach(function(part) {
-    var item = part.split("=");
-		var linkName = decodeURIComponent(item[1]).split("|");
-		result.push([linkName[0],linkName[1]]);
-  });
+  var parameters = query.split("&")
+	if(parameters.length==1) //This signifies that the user has made a search to all the mines
+	{
+		//Make an ajax call to get the list of mines
+		$.getJSON("https://registry.intermine.org/service/instances", function(data){
+			if(data.statusCode==200){
+	      var mineList = [];
+	      for(each in data.instances)
+	        result.push([data.instances[each].url,data.instances[each].name]);
+				}
+			});
+	}
+	else{
+		for(i=1;i<parameters.length;i++) {
+	    var item = parameters[i].split("=");
+			var linkName = decodeURIComponent(item[1]).split("|");
+			result.push([linkName[0],linkName[1]]);
+	  };
+	}
   return result;
 }
-console.log(getJsonFromUrl());
 
 var mineListObj = getJsonFromUrl();
 var i = 0;
