@@ -13,20 +13,42 @@ var fetchMineList = (function () {
 	function searchCallback(data) {
 		if(data.statusCode==200){
       var mineList = [];
-      for(each in data.instances)
-        mineList.push({
-          name : data.instances[each].name,
-          url : data.instances[each].url
-        });
+			var neighbours = new Set();
+      for(each in data.instances){
+				mineList.push(data.instances[each].name);
+				//Iterate over all the neighbours of each mine and add them to the set, replacement of spaces is necessary because the in some cases neighbours are "Plants" and " Plants"
+				for(all in data.instances[each].neighbours)
+					neighbours.add(data.instances[each].neighbours[all].replace(" ",""));
+			}
+			var neighbours = Array.from(neighbours);
+			for (item in neighbours){
+				$(".sInfoNeighbours").append(
+					'<div id="sInfo" class="choiceLst">\
+						<div data-toggle="buttons" class="btn-group bizmoduleselect">\
+							<label class="btn chbtn">\
+								<div class="bizcontent">\
+									<button id="choices">\
+										<input type="checkbox" name="neighbours" value="'
+										+ neighbours[item] + '"/>\
+										' + neighbours[item] +'\
+									</button>\
+								</div>\
+							</label>\
+						</div>\
+					</div>'
+				);
+			};
+
 				for (each in mineList){
-					$(".sInfo").append(
+					$(".sInfoMines").append(
 						'<div id="sInfo" class="choiceLst">\
 							<div data-toggle="buttons" class="btn-group bizmoduleselect">\
 								<label class="btn chbtn">\
 									<div class="bizcontent">\
 										<button id="choices">\
-											<input type="checkbox" name="mines[]" value="'+ mineList[each].url+'|'+ mineList[each].name + '"/>\
-											' + mineList[each].name +'\
+											<input type="checkbox" name="mines" value="'
+											+ mineList[each] + '"/>\
+											' + mineList[each] +'\
 										</button>\
 									</div>\
 								</label>\

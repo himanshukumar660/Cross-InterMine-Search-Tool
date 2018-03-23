@@ -1,6 +1,5 @@
 //Function to submit the search form
 function submitSForm() {
-	console.log("clicked");
 	document.getElementById("sForm").submit();
 };
 //Whenever the user clicks seachbtn or search input button, submit the query form
