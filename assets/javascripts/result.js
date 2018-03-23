@@ -27,12 +27,7 @@
       if(data.statusCode==200){
 
         var mineList = {};
-        //The following selects all the mines if the user has not selected any mine
-        if(queries["mines"].size==0){
-          for(each in data.instances){
-            queries["mines"].add(data.instances[each].name);
-          }
-        }
+        
         //Now we add those mines whose neighbours are in the neighbours set, also we make a dictinary of {mineName:[Url,logo,neighbours]} to access later
         for(each in data.instances){
           for(everyN in data.instances[each].neighbours){
@@ -50,8 +45,14 @@
             neighbours : data.instances[each].neighbours
           };
         }
-        ////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
+
+        //The following selects all the mines if the user has not selected any mine
+        if(queries["mines"].size==0){
+          for(each in data.instances){
+            queries["mines"].add(data.instances[each].name);
+          }
+        }
+
         var apiSearchEndPoint = "/service/search?q=" + queries["sQuery"] + "&size=10";
 
         $.each(Array.from(queries["mines"]), function(index, item) {
@@ -134,10 +135,6 @@
         		})
         	}
         });
-
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        //Now let us call API for each of the selected mines
       }
       else{
         console.log("API called but status Code is"+data.statusCode);
@@ -146,29 +143,4 @@
     .fail(function() {
       console.log("Could not connect to Registry end ponit")
     });
-  // var sQuery = parameters[0].split("=");
-	// result.push(sQuery);
-	// //This signifies that the user has made a search to all the mines
-	// if(parameters.length==1)
-	// {
-	// 	//Make a synchronous API call to get the list of mines
-	// 	var request = new XMLHttpRequest();
-	// 	request.open("GET", "https://registry.intermine.org/service/instances", false);  // `false` makes the request synchronous
-	// 	request.send(null);
-	// 	if (request.status === 200) {
-	// 		var data = JSON.parse(request.response);
-	// 		if(data.statusCode==200){
-	// 		 for(each in data.instances)
-	// 			 result.push([data.instances[each].url,data.instances[each].name]);
-	// 		 }
-	// 	 }
-	// }
-	// else{
-	// 	for(i=1;i<parameters.length;i++) {
-	//     var item = parameters[i].split("=");
-	// 		var linkName = decodeURIComponent(item[1]).split("|");
-	// 		result.push([linkName[0],linkName[1]]);
-	//   };
-	// }
-  // return result;
 }());
