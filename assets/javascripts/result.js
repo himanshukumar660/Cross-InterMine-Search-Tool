@@ -187,7 +187,9 @@
                 <div id="mineInfoName">\
                     <h2><a href="\
                     '+ mineInfo[mineName].url + '" style="color:black">\
-                    '+ mineInfo[mineName].name + '</a></h2>\
+                    '+ mineInfo[mineName].name + '</a>\
+                    <a href="'+mineInfo[mineName].url+'"><i class="fa fa-external-link" style="color:lightgray;font-size:20px" title="official Website"></i></a>\
+                    </h2>\
                 </div>\
                 <div id="mineInfoLogo">\
                   <a href="\
@@ -215,9 +217,9 @@
                   '+ mineInfo[mineName].latitude + ', ' + mineInfo[mineName].longitude + '\
                 </p>\
                 <p id="twitter">\
-                  <a href="https://twitter.com/' + mineInfo[mineName].twitter + '">\
-                    <i class="ionicons ion-social-twitter" style="color:#2caae1;font-size:30px"></i>\
-                  </a>\
+                    <a href="https://twitter.com/' + mineInfo[mineName].twitter + '">\
+                      <i class="ionicons ion-social-twitter" style="color:#2caae1;font-size:30px"></i>\
+                    </a>\
                 </p>\
                 <p style="text-align:right;font-size:12px"><em>Mine Information</em></p>\
               </div>\
