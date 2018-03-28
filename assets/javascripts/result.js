@@ -27,7 +27,7 @@
       if(data.statusCode==200){
 
         var mineList = {};
-        
+
         //Now we add those mines whose neighbours are in the neighbours set, also we make a dictinary of {mineName:[Url,logo,neighbours]} to access later
         for(each in data.instances){
           for(everyN in data.instances[each].neighbours){
