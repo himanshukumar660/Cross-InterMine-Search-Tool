@@ -210,17 +210,16 @@ table tr {
   padding: 10px;
 }
 .sResultsMine{
-  background-color: white;
   position: fixed;
   right: 15px;
   border: 1px solid lightgray;
   border-radius: 3px;
   padding:10px;
   margin:20px;
-  width:37%;
-  font-size:14px;
+  width:35%;
+  font-size:13px;
   display: none;
-  margin-bottom: 50px;
+  background-color: white;
 }
 #mineInfoHeader{
   display: flex;
@@ -235,6 +234,24 @@ table tr {
 #mineInfoLogo{
   float: right;
   border-radius: 10px;
+}
+.sResults{
+  margin:20px;
+  margin-left:150px;
+  max-width:600px;
+  float:left;
+}
+#numberResults{
+display:none;
+color:#808080;
+font-weight:500;
+font-size:12px;
+}
+#failAPIMines{
+  display:none;
+  color:#808080;
+  font-weight:500;
+  font-size:12px;
 }
 @media only screen and (max-width: 500px) {
     .sBox{
@@ -283,5 +300,8 @@ table tr {
     }
     .sResultsMine{
       display: none;
+    }
+    .sResults{
+      margin-left: 20px;
     }
 }

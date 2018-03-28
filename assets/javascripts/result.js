@@ -219,7 +219,7 @@
                     <i class="ionicons ion-social-twitter" style="color:#2caae1;font-size:30px"></i>\
                   </a>\
                 </p>\
-                <p style="text-align:right;font-size:13px"><em>Mine Information</em></p>\
+                <p style="text-align:right;font-size:12px"><em>Mine Information</em></p>\
               </div>\
               </div>\
               ');
