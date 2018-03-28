@@ -23,7 +23,7 @@ body {
   margin-bottom: 20px;
 }
 .sInpt{
-  width: 600px;
+  width: 632px;
   margin:10px;
   display: inline-flex;
   box-shadow: 1px 2px 4px 0 rgba(27,42,53,.25);
@@ -78,7 +78,7 @@ body {
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
-  font-weight: 800;
+  font-weight: 500;
   transition: all 0.1s ease-in-out;
   color:rgba(27,42,53,.80);
   font-size: 15px;
@@ -113,6 +113,7 @@ body {
   color:grey;
   outline: none!important;
   transition: all 0.1s ease-in-out;
+  border: 1px solid lightgray;
 }
 .choiceLst{
   padding-left:0px;
@@ -125,7 +126,7 @@ body {
 .clicked {
   background-color:#bdd73c!important;
   color: black!important;
-  font-weight: 800;
+  font-weight: 500;
 }
 .chbtn{
   outline: none!important;
@@ -141,19 +142,24 @@ table tr {
 }
 
 #sResultBox{
-  width:60%;
+  max-width: 600px;
   margin: 10px auto;
-  border-radius: 10px;
-  border: 1px solid #d1d5da;
-  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  border-radius: 3px;
+  border: 0.6px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   transform: translateZ(0);
+  cursor: pointer;
+  transition: 0.1s all ease-in-out;
+}
+#sResultBox:hover{
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 #mineNameHeader{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   display:inline-block;
   width:100%;
-  background-color:#d4e8ff
+  background-color:#fafafa;
 }
 .star-ratings-css {
   unicode-bidi: bidi-override;
@@ -181,8 +187,55 @@ table tr {
     display: block;
     z-index: 0;
 }
-
-
+.sHeader{
+  display: inline-flex;
+}
+#sImgHeader{
+  width:120px;
+  padding: 10px;
+  cursor: pointer;
+}
+#sHeaderLogo{
+  padding-top: 15px;
+}
+.jumbotron.rHeader{
+  position: fixed;
+  width:100%;
+  padding-top: 20px;
+  background-color: #fafafa;
+  z-index: 100;
+  border-bottom: 10px solid white;
+}
+.rType{
+  padding: 10px;
+}
+.sResultsMine{
+  background-color: white;
+  position: fixed;
+  right: 15px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding:10px;
+  margin:20px;
+  width:37%;
+  font-size:14px;
+  display: none;
+  margin-bottom: 50px;
+}
+#mineInfoHeader{
+  display: flex;
+  width: 100%;
+  min-height: 100px;
+}
+#mineInfoName{
+  display: flex;
+  align-items: center;
+  flex: 1 10;
+}
+#mineInfoLogo{
+  float: right;
+  border-radius: 10px;
+}
 @media only screen and (max-width: 500px) {
     .sBox{
         width: 170%;
@@ -227,5 +280,8 @@ table tr {
     }
     #sResultBox{
       width: 100%;
+    }
+    .sResultsMine{
+      display: none;
     }
 }

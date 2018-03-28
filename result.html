@@ -20,8 +20,35 @@
 </head>
 
 <body>
-	<div style="display:none" class="alert alert-danger error"></div>
-	<div style="margin:20px;" class="sResults"></div>
+	<div class="jumbotron rHeader">
+		<div class="sHeader">
+			<a href="./index.html" title="Go to Intermine Search Home Page" id="sHeaderLogo">
+				<img id="sImgHeader" src="./assets/images/intermine.png" alt="Intermine"/>
+			</a>
+			<div>
+				<form method="get" action="result.html" id="sForm">
+					<div class="sInpt">
+						<input id="sBar" name="sQuery" type="text" placeholder="Search Here.." autocomplete="off" />
+						<button id="sBtn" type="submit">
+							<i id="sBtnIcon" class="ionicons ion-ios-search-strong"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div style="display:inline-flex;width:100%;margin-top:130px">
+		<div style="margin:20px;margin-left:150px;max-width:600px;float:left" class="sResults">
+			<div id="numberResults" style="display:none;color:#808080;font-weight:500;font-size:12px"></div>
+			<div id="failAPIMines" style="display:none;color:#808080;font-weight:500;font-size:12px">Coudnt load results from </div>
+			<hr />
+
+		</div>
+		<div class="sResultsMine">
+		</div>
+</div>
+</div>
 	<script type="text/javascript" src="./assets/javascripts/result.js"></script>
 	<script type="text/javascript" src="./assets/javascripts/main.js"></script>
 </body>
