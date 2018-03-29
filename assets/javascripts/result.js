@@ -128,11 +128,12 @@
                         </div>\
                       </div>\
       							</div>\
-      							<table style="width:60%;">\
+      							<table style="width:100%;">\
       								<tr style="float:left;">\
       							    <td>\
                         <p style="font-size:18px;"><span style="font-weight:500"> Type:</span> ' + data.results[ech].type.replace(/([A-Z][a-z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) + '</p>\
-                        <p style="overflow-wrap: break-word;font-size:14px;line-height:1.2;max-width:550px">' + all + '</p></td>\
+                        <hr>\
+						<p style="overflow-wrap: break-word;font-size:14px;line-height:1.2;max-width:550px">' + all + '</p></td>\
       							  </tr>\
       							</table>\
       						</div>'
