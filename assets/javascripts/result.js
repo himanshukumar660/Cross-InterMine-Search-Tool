@@ -39,6 +39,12 @@
             queries["mines"].add(data.instances[each].name);
           }
         }
+		
+		//there are certain entries in mines registry, that contains twitter handle along with @, thus remove it if its there, else ignore
+		var twitter = data.instances[each].twitter;
+		if(twitter.toString()[0]=="@")
+			twitter = twitter.substr(1);
+		
         mineInfo[data.instances[each].name] = {};
         mineInfo[data.instances[each].name] = {
           name : data.instances[each].name,
@@ -47,7 +53,7 @@
           neighbours : data.instances[each].neighbours,
           description : data.instances[each].description,
           organisms : data.instances[each].organisms,
-          twitter : data.instances[each].twitter,
+		  twitter : twitter,
           latitude : data.instances[each].location.latitude,
           longitude : data.instances[each].location.longitude
         };
@@ -157,7 +163,7 @@
       				});'
     				$("body").append(s);
 
-            $(".sResults #sResultBox").click(function() {
+            $(".sResults #sResultBox").hover(function() {
               var mineName = $(this).find($("#mineNameHeader p")).text();
               var mineOrganisms = "", mineNeighbours = "";
               console.log(mineName);
@@ -219,7 +225,8 @@
                 </p>\
                 <p id="twitter">\
                     <a href="https://twitter.com/' + mineInfo[mineName].twitter + '">\
-                      <i class="ionicons ion-social-twitter" style="color:#2caae1;font-size:30px"></i>\
+                      <i class="ionicons ion-social-twitter" style="color:#2caae1;font-size:18px"></i>\
+					<span style="color:black;font-size:13px;font-weight:500;text-decoration:none">@'+mineInfo[mineName].twitter+'</span>\
                     </a>\
                 </p>\
                 <p style="text-align:right;font-size:12px"><em>Mine Information</em></p>\

@@ -10,7 +10,6 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="#474b4F">
 	<link rel="shortcut icon" href="./assets/images/favicon.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<l></l>
 	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500" rel="stylesheet">
 	<link rel="stylesheet" href="./assets/stylesheets/style.css">
@@ -22,13 +21,37 @@
 	<script>
 	//The following script display the page only after the mines Lists have loaded completly.
 	  $(document).ajaxComplete(function(){
-	      $(".sBox").css("display", "block");
+	      $("#loader_div").hide();
+		  $("#mineListDiv").show();
 		});
 	</script>
+	<style>
+		@keyframes loader{
+			0% {
+			    opacity: 1.0;
+			    -webkit-transform: translateY(0);
+			    transform: translateY(0);
+			}
+			100% {
+			    opacity: 0.15;
+			    -webkit-transform: translateY(-10px) scale(0.75);
+			    transform: translateY(-10px) scale(0.75);
+			}
+		}
+		.loader__line {
+		    height: 1em;
+		    width: 1em;
+		    display: inline-block;
+		    background-color: #bed73b;
+		    border-radius: 50%;
+		    -webkit-animation: loader 0.6s infinite alternate;
+		    animation: loader 0.6s infinite alternate;
+		}	
+	</style>
 </head>
 
 <body>
-	<div class="sBox" style="display:none">
+	<div class="sBox">
 		<div class="sImg"><img id="sImg" src="./assets/images/intermine.png" /></div>
 		<form method="get" action="result.html" id="sForm">
 			<div class="sInpt">
@@ -38,13 +61,25 @@
 			<div class="sInptBtn">
 				<button id="sInptBtn" type="submit">Search All</button>
 			</div>
-				<div class="sInfoNeighbours">
-
+			<div>
+				<div style="display:block;margin:100px auto" id="loader_div">
+					<div class="loader">
+					  <div class="loader__line"></div>
+					  <div class="loader__line"></div>
+					  <div class="loader__line"></div>
+					  <div class="loader__line"></div>
+					</div>
 				</div>
-				<hr style="max-width:800px"/>
-				<div class="sInfoMines">
+				<div style="display:none" id="mineListDiv">
+					<div class="sInfoNeighbours">
 
+					</div>
+					<hr style="max-width:800px;margin-top:10px;margin-bottom:10px;"/>
+					<div class="sInfoMines">
+
+					</div>
 				</div>
+			</div>
 		</form>
 	</div>
 	<script type="text/javascript" src="./assets/javascripts/welcome.js"></script>

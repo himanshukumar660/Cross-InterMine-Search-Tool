@@ -14,4 +14,4 @@ setInterval(
 		} else {
 			$('#sInptBtn').html('Search All')
 		}
-	}, 100);
+}, 100);

@@ -8,7 +8,7 @@ body {
   display: block;
   text-align: center;
   background-color: unset;
-  margin:105px auto;
+  margin:100px auto;
   min-width: 45.6%;
 }
 .sImg{
@@ -90,13 +90,15 @@ body {
 .sInfoMines{
   display: inline-block;
   line-height: 28px;
-  padding-top: 5px;
-  max-width: 800px;
+  max-width: 900px;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
 .sInfoNeighbours{
   margin-top: 20px;
+}
+#mineListDiv{
+	transition: all 0.1s ease-in-out;
 }
 #sInfo{
   padding-left: 5px;
@@ -114,6 +116,7 @@ body {
   outline: none!important;
   transition: all 0.1s ease-in-out;
   border: 1px solid lightgray;
+  line-height: 2;
 }
 .choiceLst{
   padding-left:0px;
@@ -122,11 +125,6 @@ body {
 }
 #choices:hover{
   background-color: lightgrey;
-}
-.clicked {
-  background-color:#bdd73c!important;
-  color: black!important;
-  font-weight: 500;
 }
 .chbtn{
   outline: none!important;
@@ -146,15 +144,14 @@ table tr {
   width:600px;
   margin: 10px auto;
   border-radius: 3px;
-  border: 0.6px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border: 1px solid lightgray;
   transform: translateZ(0);
   cursor: pointer;
   transition: 0.1s all ease-in-out;
 }
-#sResultBox:hover{
+/*#sResultBox:hover{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-}
+}*/
 #mineNameHeader{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
