@@ -11,7 +11,6 @@
 	<link rel="shortcut icon" href="./assets/images/favicon.ico">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<l></l>
 	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500" rel="stylesheet">
 	<link rel="stylesheet" href="./assets/stylesheets/style.css">
@@ -25,7 +24,13 @@
 			<a href="./index.html" title="Go to Intermine Search Home Page" id="sHeaderLogo">
 				<img id="sImgHeader" src="./assets/images/intermine.png" alt="Intermine"/>
 			</a>
-			<div>
+			<div style="width:100%">
+				<div style="width:100%">
+					<a href="./index.html" title="Go to Intermine Search Home Page" id="sHeaderLogo">
+					<img id="sImgHeaderMobile" src="./assets/images/intermine.png" alt="Intermine"/>
+				</a>
+				</div>
+				
 				<form method="get" action="result.html" id="sForm">
 					<div class="sInpt">
 						<input id="sBar" name="sQuery" type="text" placeholder="Search Here.." autocomplete="off" />
@@ -34,23 +39,36 @@
 						</button>
 					</div>
 				</form>
+				<div>
+					<div class="rTool">	
+						<div style="display:inline-flex">
+							<p class="rToolBtns rToolBtnActive">ALL</p>
+							<p class="rToolBtns">Mines</p>
+							<p class="rToolBtns">Scores</p>
+							<p class="rToolBtns">Class</p>
+						</div>
+						<div style="display:inline-flex">
+							<p class="rToolBtns" >Modify Search</p>
+							<p class="rToolBtns">Saved Results</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div style="display:inline-flex;width:100%;margin-top:130px">
+	<div id="mainResults">
 		<div class="sResults">
 			<div id="numberResults"></div>
 			<div id="failAPIMines">Coudn't load results from </div>
-			<hr />
+			<hr style="margin-top:10px;margin-bottom:10px"/>
 
 		</div>
 		<div style="position:fixed">
 			<div class="sResultsMine">
 			</div>
 		</div>
-
-</div>
+	</div>
 </div>
 	<script type="text/javascript" src="./assets/javascripts/result.js"></script>
 	<script type="text/javascript" src="./assets/javascripts/main.js"></script>
