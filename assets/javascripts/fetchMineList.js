@@ -54,6 +54,11 @@ var fetchMineList = (function () {
 				css.innerHTML = "."+neighbours[item]+"{"+"background-color:#bed73b!important;\
 			    color: black!important;\
 			    font-weight: 500;\
+				border:none!important;\
+				box-shadow:0 0.3em 0.5em -0.2em rgba(100,100,100,1),\
+				 0 1em 2em -0.75em rgba(100,100,100,0.75),\
+				 0 0.31em 0.5em -0.5em rgba(100,100,100,0.5),\
+				 0 0.3em 0.5em -0.2em rgba(100,100,100,0.2);\
 				}";
 				$("head").append(css);
 			};
@@ -78,6 +83,11 @@ var fetchMineList = (function () {
 					css.innerHTML = "."+mineList[each][0]+"{"+"background-color:"+mineList[each][1]+"!important;\
 				    color: "+mineList[each][2]+"!important;\
 				    font-weight: 500;\
+					border:none!important;\
+					box-shadow:0 0.3em 0.5em -0.2em rgba(100,100,100,1),\
+					 0 1em 2em -0.75em rgba(100,100,100,0.75),\
+					 0 0.31em 0.5em -0.5em rgba(100,100,100,0.5),\
+					 0 0.3em 0.5em -0.2em rgba(100,100,100,0.2);\
 					}";
 					$("head").append(css); 
 				}

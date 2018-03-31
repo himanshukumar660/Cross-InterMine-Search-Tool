@@ -16,6 +16,14 @@
 	<link rel="stylesheet" href="./assets/stylesheets/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script>
+	//The following script display the page only after the mines Lists have loaded completly.
+	  $(document).ajaxComplete(function(){
+	      $("#loader_div").hide();
+		  $("#mainResults").show();
+		});
+	</script>
 </head>
 
 <body>
@@ -42,7 +50,7 @@
 				<div>
 					<div class="rTool">	
 						<div style="display:inline-flex">
-							<p class="rToolBtns rToolBtnActive">ALL</p>
+							<p class="rToolBtns rToolBtnActive">All</p>
 							<p class="rToolBtns">Mines</p>
 							<p class="rToolBtns">Scores</p>
 							<p class="rToolBtns">Class</p>
@@ -56,13 +64,19 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="mainResults">
+	<div style="width: 100%;text-align:  center;margin: 275px auto;position:absolute" id="loader_div">
+				<div class="loader">
+				  <div class="loader__line"></div>
+				  <div class="loader__line"></div>
+				  <div class="loader__line"></div>
+				  <div class="loader__line"></div>
+	</div>
+	</div>
+	</div>
+	<div id="mainResults" style="display:none">
 		<div class="sResults">
 			<div id="numberResults"></div>
 			<div id="failAPIMines">Coudn't load results from </div>
-			<hr style="margin-top:10px;margin-bottom:10px"/>
-
 		</div>
 		<div style="position:fixed">
 			<div class="sResultsMine">
