@@ -312,6 +312,7 @@ font-size:12px;
 margin-bottom: 10px;
 }
 #failAPIMines{
+  display:none;
   margin-top:-10px;
   margin-bottom: 10px;
 }
