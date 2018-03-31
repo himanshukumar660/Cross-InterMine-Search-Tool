@@ -1,4 +1,3 @@
-
 function removeActiveClass(){
 	$(".rToolBtns.rToolBtnActive").each(function(index){
 		$(this).removeClass("rToolBtnActive");
@@ -17,7 +16,7 @@ function addActiveClass(element){
 		//Show the details of the recent searches
 		$("#recentSearch").show();
 		//Hide the details of all the saved results
-		$(".sResultsSaved").hide();
+		$("#savedSearch").hide();
 	});
 })();
 //Run this function to show the saved results
@@ -31,22 +30,35 @@ function addActiveClass(element){
 		$(".sResultsSaved").html("");
 		for(i=0;i<localStorage.length;i++)
 		{
-			$(".sResultsSaved").prepend(localStorage.getItem(localStorage.key(i)));
+			//Outer div is useful while deleting the saved result
+			$(".sResultsSaved").prepend("<div class='outerDiv'>"+localStorage.getItem(localStorage.key(i))+"</div>");
 		}
 		//Modify the dom a bit to replace the download button into a delete button
 		$(".sResultsSaved .sResultBox").each(function(){
 				$(this).find($(".mineNameHeader .rStats i.fa.fa-download")).remove();
-				$(this).find($(".mineNameHeader .rStats")).append('<i class="ionicons ion-android-delete rDeleteBtn" titile="Delete"></i>');
+				$(this).find($(".mineNameHeader .rStats")).append('<i class="ionicons ion-android-delete rDeleteBtn" data-toggle="tooltip" titile="Delete"></i>');
 		});
 		//Load the number of saved results
-		$("#numberResultsSaved").html("About "+localStorage.length+" results");
+		$("#numberResultsSaved").html("Showing "+localStorage.length+" results");	
 		
 		//Hide the details of the recent searches
 		$("#recentSearch").hide();
-		
-		//Show the details of all the saved results
-		$(".sResultsSaved").show();
-		$("#numberResultsSaved").show();
+		//Show the details of the saved searches
+		$("#savedSearch").show();
+		//Hide the mine Information
+		$(".sResultsMine").hide();
+		//Deletion of saved results
+		$(".rDeleteBtn").click(function(){
+				$(this).closest(".outerDiv").hide();
+				$(this).closest($(".rStats")).append('<i class="fa fa-download rSavedBtn" data-toggle="tooltip" title="Save"></i>');
+				var div = $(this).closest(".sResultBox");
+				var divHTML = div[0].outerHTML;
+				$(this).remove();
+				var divHTML = div[0].outerHTML;
+				localStorage.removeItem(divHTML);
+				$("#numberResultsSaved").html("Showing "+localStorage.length+" results");
+				$('.rToolBtns.rSaved .badge').text(localStorage.length);	
+		});
 	});
 })();
 
@@ -176,7 +188,7 @@ function addActiveClass(element){
       				'<div class="sResultBox">\
       							<div class="mineNameHeader">\
       								<div style="display:inline-flex;float:left">\
-                        <img alt="Mine Logo" src="'+mineList[item].logo_url[logoMine]+'" style="padding:5px;width:40px;height:40px">\
+                        <img alt="Mine Logo" src="'+mineList[item].logo_url[logoMine]+'" style="font-size:8px;padding:5px;width:40px;height:40px">\
       									<p style="margin:10px;font-weight:500">' + mineList[item].name + '</b></p>\
       								</div>\
                       <div class="rStats" style="float:right;display:inline-flex;padding:8px;transform:scale(0.7)">\
@@ -184,8 +196,7 @@ function addActiveClass(element){
                           <div class="star-ratings-css-top" style="width: '+ (data.results[ech].relevance/maxRelevance)*100+'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
                           <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
                         </div>\
-                        <i class="fa fa-download rSavedBtn" title="Save"></i>\
-                      </div>\
+                        <i class="fa fa-download rSavedBtn" data-toggle="tooltip" title="Save"></i></div>\
       							</div>\
       							<table style="width:100%;">\
       								<tr style="float:left;margin:0px">\
@@ -203,7 +214,7 @@ function addActiveClass(element){
               "display" : "block"
             });
             //var numOfResultsPrev = parseInt($(".sResults").find($("#numberResults")).text());
-            $("#numberResults").text("About "+ totalResults + " results");
+            $("#numberResults").text("Showing "+ totalResults + " results");
 
             //To unbind the effect of all the previous made event listeners on the result box
             $(".sResults .sResultBox .mineNameHeader .rSavedBtn").unbind();
@@ -214,6 +225,7 @@ function addActiveClass(element){
               $(".sResults .sResultBox .mineNameHeader .rSavedBtn").click(function() {\
 				var divDetails = $(this).closest($(".sResultBox"))[0].outerHTML;\
 				localStorage.setItem(divDetails,divDetails);\
+				$(".rToolBtns.rSaved .badge").text(localStorage.length);\
               });'
     		$("body").append(s);
 

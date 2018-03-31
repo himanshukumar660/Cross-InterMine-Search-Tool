@@ -57,7 +57,7 @@
 						</div>
 						<div style="display:inline-flex">
 							<p class="rToolBtns mSearch">Modify Search</p>
-							<p class="rToolBtns rSaved">Saved Results</p>
+							<p class="rToolBtns rSaved">Saved<span class="badge"></span></p>
 						</div>
 					</div>
 				</div>
@@ -80,10 +80,10 @@
 				<div id="failAPIMines">Coudn't load results from </div>
 				<div class="sResultsMain"></div>
 			</div>
-			<div id="savedSearch">
+			<div id="savedSearch" style="display:none">
 				<!-- This following three lines belongs to the searches that the user has saved-->
-				<div id="numberResultsSaved" style="display:none"></div>
-				<div class="sResultsSaved" style="display:none"></div>
+				<div id="numberResultsSaved"></div>
+				<div class="sResultsSaved"></div>
 			</div>
 		</div>
 		<div style="position:fixed">
@@ -91,6 +91,13 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		//for tooltips
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip();
+			$('.rToolBtns.rSaved .badge').text(localStorage.length);   
+		});
+	</script>
 	<script src="./assets/javascripts/result.js"></script>
 	<script src="./assets/javascripts/main.js"></script>
 </body>

@@ -161,6 +161,13 @@ table tr {
   cursor: pointer;
   transition: 0.1s all ease-in-out;
 }
+.badge{
+	vertical-align:baseline;
+	font-weight:300;
+	margin-left:5px;
+	margin-right:5px;
+	background-color:#609c42;
+}
 /*#sResultBox:hover{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }*/
@@ -218,7 +225,7 @@ table tr {
 	margin-right:3px;
 }
 .rToolBtnActive{
-	border-bottom: 3px solid #bed73b;
+	border-bottom: 3px solid #609c42;
 }
 .rTool{
 	padding:10px;
@@ -299,7 +306,6 @@ table tr {
   width:100%;
 }
 #numberResults, #failAPIMines, #numberResultsSaved{
-display:none;
 color:#808080;
 font-weight:500;
 font-size:12px;
@@ -310,8 +316,13 @@ margin-bottom: 10px;
   margin-bottom: 10px;
 }
 .rSavedBtn, .rDeleteBtn{
+	color: lightgray;
 	margin-left: 10px;
 	font-size: 25px;
+	transition:0.1s all ease-in-out;
+}
+.rSavedBtn:hover, .rDeleteBtn:hover{
+	color:#868686;
 }
 /*Loader animation*/
 @keyframes loader{
