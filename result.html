@@ -50,14 +50,14 @@
 				<div>
 					<div class="rTool">	
 						<div style="display:inline-flex">
-							<p class="rToolBtns rToolBtnActive">All</p>
-							<p class="rToolBtns">Mines</p>
-							<p class="rToolBtns">Scores</p>
-							<p class="rToolBtns">Class</p>
+							<p class="rToolBtns rToolBtnActive showAll">All</p>
+							<p class="rToolBtns fMines">Mines</p>
+							<p class="rToolBtns fScores">Scores</p>
+							<p class="rToolBtns fClass">Class</p>
 						</div>
 						<div style="display:inline-flex">
-							<p class="rToolBtns" >Modify Search</p>
-							<p class="rToolBtns">Saved Results</p>
+							<p class="rToolBtns mSearch">Modify Search</p>
+							<p class="rToolBtns rSaved">Saved Results</p>
 						</div>
 					</div>
 				</div>
@@ -74,8 +74,17 @@
 	</div>
 	<div id="mainResults" style="display:none">
 		<div class="sResults">
-			<div id="numberResults"></div>
-			<div id="failAPIMines">Coudn't load results from </div>
+			<div id="recentSearch">
+				<!-- This following three lines belongs to the searches that the user has made-->
+				<div id="numberResults"></div>
+				<div id="failAPIMines">Coudn't load results from </div>
+				<div class="sResultsMain"></div>
+			</div>
+			<div id="savedSearch">
+				<!-- This following three lines belongs to the searches that the user has saved-->
+				<div id="numberResultsSaved" style="display:none"></div>
+				<div class="sResultsSaved" style="display:none"></div>
+			</div>
 		</div>
 		<div style="position:fixed">
 			<div class="sResultsMine">

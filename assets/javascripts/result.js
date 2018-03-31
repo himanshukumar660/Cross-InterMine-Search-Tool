@@ -1,5 +1,57 @@
+
+function removeActiveClass(){
+	$(".rToolBtns.rToolBtnActive").each(function(index){
+		$(this).removeClass("rToolBtnActive");
+	});
+}
+
+function addActiveClass(element){
+	element.addClass("rToolBtnActive");
+}
+(function showAll(){
+	$(".showAll").click(function(){
+		//Remove the active class from all the tool buttons
+		removeActiveClass();
+		//Add the active class to the save button
+		addActiveClass($(this));
+		//Show the details of the recent searches
+		$("#recentSearch").show();
+		//Hide the details of all the saved results
+		$(".sResultsSaved").hide();
+	});
+})();
+//Run this function to show the saved results
+(function showSaved(){
+	$(".rSaved").click(function(){
+		//Remove the active class from all the tool buttons
+		removeActiveClass();
+		//Add the active class to the save button
+		addActiveClass($(this));
+		//Prepend all the saved results to the div
+		$(".sResultsSaved").html("");
+		for(i=0;i<localStorage.length;i++)
+		{
+			$(".sResultsSaved").prepend(localStorage.getItem(localStorage.key(i)));
+		}
+		//Modify the dom a bit to replace the download button into a delete button
+		$(".sResultsSaved .sResultBox").each(function(){
+				$(this).find($(".mineNameHeader .rStats i.fa.fa-download")).remove();
+				$(this).find($(".mineNameHeader .rStats")).append('<i class="ionicons ion-android-delete rDeleteBtn" titile="Delete"></i>');
+		});
+		//Load the number of saved results
+		$("#numberResultsSaved").html("About "+localStorage.length+" results");
+		
+		//Hide the details of the recent searches
+		$("#recentSearch").hide();
+		
+		//Show the details of all the saved results
+		$(".sResultsSaved").show();
+		$("#numberResultsSaved").show();
+	});
+})();
+
 //The following function returns all the parameters from the url
-(function () {
+(function main() {
   //Get the parameters from the Url
   var query = decodeURIComponent(location.search.substr(1));
   var result = [];
@@ -120,18 +172,19 @@
              </div>';
 
 
-            $(".sResults").append(
+            $(".sResults .sResultsMain").append(
       				'<div class="sResultBox">\
       							<div class="mineNameHeader">\
       								<div style="display:inline-flex;float:left">\
                         <img alt="Mine Logo" src="'+mineList[item].logo_url[logoMine]+'" style="padding:5px;width:40px;height:40px">\
       									<p style="margin:10px;font-weight:500">' + mineList[item].name + '</b></p>\
       								</div>\
-                      <div style="float:right;display:inline-flex;padding:8px;transform:scale(0.7)">\
+                      <div class="rStats" style="float:right;display:inline-flex;padding:8px;transform:scale(0.7)">\
                         <div class="star-ratings-css" >\
                           <div class="star-ratings-css-top" style="width: '+ (data.results[ech].relevance/maxRelevance)*100+'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
                           <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
                         </div>\
+                        <i class="fa fa-download rSavedBtn" title="Save"></i>\
                       </div>\
       							</div>\
       							<table style="width:100%;">\
@@ -146,27 +199,27 @@
       			);
       		}
 
-            $(".sResults").find($("#numberResults")).css({
+            $("#numberResults").css({
               "display" : "block"
             });
             //var numOfResultsPrev = parseInt($(".sResults").find($("#numberResults")).text());
-            $(".sResults").find($("#numberResults")).text("About "+ totalResults + " results");
+            $("#numberResults").text("About "+ totalResults + " results");
 
             //To unbind the effect of all the previous made event listeners on the result box
-            $(".sResults .sResultBox").unbind();
-            //Add the script to view the mine information on click of a button
+            $(".sResults .sResultBox .mineNameHeader .rSavedBtn").unbind();
+			
+            //Add the script to save the result to local Storage, the key and value are kept same so that there may not ne duplicate entries
             var s = document.createElement("script");
-    				s.innerHTML = '\
-              $(".sResults .sResultBox").click(function() {\
-                var mineName = $(this).find($("#mineNameHeader p")).text();\
-                console.log(mineName);\
-      				});'
-    				$("body").append(s);
+    		s.innerHTML = '\
+              $(".sResults .sResultBox .mineNameHeader .rSavedBtn").click(function() {\
+				var divDetails = $(this).closest($(".sResultBox"))[0].outerHTML;\
+				localStorage.setItem(divDetails,divDetails);\
+              });'
+    		$("body").append(s);
 
-            $(".sResults .sResultBox").hover(function() {
+            $(".sResults .sResultBox ").hover(function() {
               var mineName = $(this).find($(".mineNameHeader p")).text();
               var mineOrganisms = "", mineNeighbours = "";
-              console.log(mineName);
               //Get the list of all organisms in that mine
               for(each in mineInfo[mineName].organisms)
               {
@@ -260,15 +313,15 @@
       		// $(".error").css({
       		// 	"display": "block"
       		// })
-          $(".sResults").find($("#failAPIMines")).css({
+          $("#failAPIMines").css({
             "display" : "block"
           });
           failAPICalls++;
           if(failAPICalls==1){
-            $(".sResults").find($("#failAPIMines")).append("<a href='"+mineInfo[item].url+"'>"+item+"</a>");
+            $("#failAPIMines").append("<a href='"+mineInfo[item].url+"'>"+item+"</a>");
           }
           else {
-            $(".sResults").find($("#failAPIMines")).append(", <a href='"+mineInfo[item].url+"'>"+item+"</a>");
+            $("#failAPIMines").append(", <a href='"+mineInfo[item].url+"'>"+item+"</a>");
           }
       	}
       });

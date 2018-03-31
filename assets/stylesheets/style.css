@@ -296,8 +296,9 @@ table tr {
   max-width:600px;
   float:left;
   line-height:20px;
+  width:100%;
 }
-#numberResults{
+#numberResults, #failAPIMines, #numberResultsSaved{
 display:none;
 color:#808080;
 font-weight:500;
@@ -305,12 +306,12 @@ font-size:12px;
 margin-bottom: 10px;
 }
 #failAPIMines{
-  display:none;
-  color:#808080;
-  font-weight:500;
-  font-size:12px;
   margin-top:-10px;
   margin-bottom: 10px;
+}
+.rSavedBtn, .rDeleteBtn{
+	margin-left: 10px;
+	font-size: 25px;
 }
 /*Loader animation*/
 @keyframes loader{
