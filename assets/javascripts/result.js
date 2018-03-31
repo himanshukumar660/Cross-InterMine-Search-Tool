@@ -121,10 +121,10 @@
 
 
             $(".sResults").append(
-      				'<div id="sResultBox">\
-      							<div id="mineNameHeader">\
+      				'<div class="sResultBox">\
+      							<div class="mineNameHeader">\
       								<div style="display:inline-flex;float:left">\
-                        <img src="'+mineList[item].logo_url[logoMine]+'" style="padding:5px;width:40px;height:40px">\
+                        <img alt="Mine Logo" src="'+mineList[item].logo_url[logoMine]+'" style="padding:5px;width:40px;height:40px">\
       									<p style="margin:10px;font-weight:500">' + mineList[item].name + '</b></p>\
       								</div>\
                       <div style="float:right;display:inline-flex;padding:8px;transform:scale(0.7)">\
@@ -137,9 +137,9 @@
       							<table style="width:100%;">\
       								<tr style="float:left;margin:0px">\
       							    <td>\
-                        <p id="rClassType">' + data.results[ech].type.replace(/([A-Z][a-z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) + '</p>\
+                        <p class="rClassType">' + data.results[ech].type.replace(/([A-Z][a-z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) + '</p>\
                         <hr style="margin-top:0px;margin-bottom:0px">\
-						<p id="rDetails">' + all + '</p></td>\
+						<p class="rDetails">' + all + '</p></td>\
       							  </tr>\
       							</table>\
       						</div>'
@@ -153,18 +153,18 @@
             $(".sResults").find($("#numberResults")).text("About "+ totalResults + " results");
 
             //To unbind the effect of all the previous made event listeners on the result box
-            $(".sResults #sResultBox").unbind();
+            $(".sResults .sResultBox").unbind();
             //Add the script to view the mine information on click of a button
             var s = document.createElement("script");
     				s.innerHTML = '\
-              $(".sResults #sResultBox").click(function() {\
+              $(".sResults .sResultBox").click(function() {\
                 var mineName = $(this).find($("#mineNameHeader p")).text();\
                 console.log(mineName);\
       				});'
     				$("body").append(s);
 
-            $(".sResults #sResultBox").hover(function() {
-              var mineName = $(this).find($("#mineNameHeader p")).text();
+            $(".sResults .sResultBox").hover(function() {
+              var mineName = $(this).find($(".mineNameHeader p")).text();
               var mineOrganisms = "", mineNeighbours = "";
               console.log(mineName);
               //Get the list of all organisms in that mine
@@ -190,15 +190,15 @@
               var logoMine = Object.keys(mineInfo[mineName].logo_url)[0].toString();
 
               $(".sResultsMine").html('\
-              <div id="mineInfoHeader">\
-                <div id="mineInfoName">\
+              <div class="mineInfoHeader">\
+                <div class="mineInfoName">\
                     <h2><a href="\
                     '+ mineInfo[mineName].url + '" style="color:black">\
                     '+ mineInfo[mineName].name + '</a>\
                     <a href="'+mineInfo[mineName].url+'"><i class="fa fa-external-link" style="color:lightgray;font-size:20px" title="official Website"></i></a>\
                     </h2>\
                 </div>\
-                <div id="mineInfoLogo">\
+                <div class="mineInfoLogo">\
                   <a href="\
                   '+ mineInfo[mineName].url +
                   '" style="color:black">\
@@ -210,20 +210,20 @@
                 </div>\
               </div>\
               <hr />\
-              <div id="mineInfoDetails">\
+              <div class="mineInfoDetails">\
                 <p>' + mineInfo[mineName].description + '</p>\
-                <p id="organisms">\
+                <p class="organisms">\
                   <span style="font-weight:500">Organisms: </span>'+ mineOrganisms + '\
                 </p>\
-                <p id="neighbours">\
+                <p class="neighbours">\
                   <span style="font-weight:500">Neighbours: </span>'
                   + mineNeighbours +
                 '</p>\
-                <p id="location">\
+                <p class="location">\
                   <span style="font-weight:500">Location: </span>\
                   '+ mineInfo[mineName].latitude + ', ' + mineInfo[mineName].longitude + '\
                 </p>\
-                <p id="twitter">\
+                <p class="twitter">\
                     <a href="https://twitter.com/' + mineInfo[mineName].twitter + '">\
                       <i class="ionicons ion-social-twitter" style="color:#2caae1;font-size:18px"></i>\
 					<span style="color:black;font-size:13px;font-weight:500;text-decoration:none">@'+mineInfo[mineName].twitter+'</span>\
@@ -234,19 +234,19 @@
               </div>\
               ');
               if(mineNeighbours=="")
-                $(".sResultsMine").find($("p#neighbours")).css({
+                $(".sResultsMine").find($("p.neighbours")).css({
                   "display" : "none"
                 });
               if(mineOrganisms=="")
-                $(".sResultsMine").find($("p#organisms")).css({
+                $(".sResultsMine").find($("p.organisms")).css({
                   "display" : "none"
                 });
               if(mineInfo[mineName].twitter=="")
-                $(".sResultsMine").find($("p#twitter")).css({
+                $(".sResultsMine").find($("p.twitter")).css({
                   "display" : "none"
                 })
               if(mineInfo[mineName].longitude==""||mineInfo[mineName].longitude=="")
-                $(".sResultsMine").find($("p#location")).css({
+                $(".sResultsMine").find($("p.location")).css({
                   "display" : "none"
                 })
               $(".sResultsMine").css({

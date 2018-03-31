@@ -151,7 +151,7 @@ table tr {
 	width:100%;
 	margin-top:130px;
 }
-#sResultBox{
+.sResultBox{
   max-width: 100%;
   width:600px;
   margin: 10px auto;
@@ -164,7 +164,7 @@ table tr {
 /*#sResultBox:hover{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }*/
-#mineNameHeader{
+.mineNameHeader{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   display:inline-block;
@@ -233,11 +233,11 @@ table tr {
 	float:right;
 	width:40%;
 }
-#rClassType{
+.rClassType{
 	font-size:18px;
 	font-weight: 500;
 }
-#rDetails{
+.rDetails{
 	overflow-wrap: break-word;
 	font-size:14px;
 	line-height:1.5;
@@ -249,7 +249,7 @@ table tr {
   padding: 10px;
   cursor: pointer;
 }
-#sHeaderLogo{
+.sHeaderLogo{
   padding-top: 15px;
 }
 .jumbotron.rHeader{
@@ -276,17 +276,17 @@ table tr {
   display: none;
   background-color: white;
 }
-#mineInfoHeader{
+.mineInfoHeader{
   display: flex;
   width: 100%;
   min-height: 100px;
 }
-#mineInfoName{
+.mineInfoName{
   display: flex;
   align-items: center;
   flex: 1 10;
 }
-#mineInfoLogo{
+.mineInfoLogo{
   float: right;
   border-radius: 10px;
 }
