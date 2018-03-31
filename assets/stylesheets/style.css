@@ -347,17 +347,18 @@ margin-bottom: 10px;
     }
 	.sBox{
         width: 170%;
-        margin-top: 250px;
+        margin-top: 200px;
     }
     #sImg{
       margin-bottom: 10px;
     }
     .sInpt{
-      height: 70px;
       border-radius: 5px;
       box-shadow: none;
       font-weight: 800;
       font-size: 25px;
+	  width:95%;
+	  height:10%;
     }
     .sInput::placeholder{
       font-weight: 400;
@@ -367,16 +368,12 @@ margin-bottom: 10px;
       font-size: 25px;
     }
     #sInptBtn{
-      font-size: 25px;
-      height: 70px;
+	    font-size: 20px;
+	    line-height: 2;
     }
     #sBar, #sBtn{
       border: 0.5px solid lightgray;
     }
-	.sInpt{
-		width:95%;
-		height:10%;
-	}
     #sBar{
       border-right: none;
 	  width:100%;
@@ -425,6 +422,7 @@ margin-bottom: 10px;
 	}
 	#sBar{
 		border-right:0px;
+		font-size:20px;
 	}
 	#sBtn{
 		border-left:0px;
