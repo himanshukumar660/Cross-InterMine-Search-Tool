@@ -1,21 +1,20 @@
 # Cross-Intermine Search Tool
-This repository contains a functional prototype for the Intermine Search tool.
 
-## Title
 A client-driven cross-InterMine search page to search term once, and search many (or all) InterMines at the same time.
 
-## Synopsis
+## About InterMine
+
+A powerful open source data warehouse system. InterMine allows users
+to integrate diverse data sources with a minimum of effort, providing
+powerful web-services and an elegant web-application with minimal
+configuration. InterMine powers some of the largest data-warehouses in
+the life sciences.
+
+For details, please visit: [InterMine Documentation](http://intermine.readthedocs.io/en/latest/)
+
+## Introduction
+
 There are lots of InterMines to explore organism and other research data provided by many different organizations. But, there is no centralized search tool from where quick search information like name, class, description, versions, organism, colors, logo from multiple mines could be retrieved at once. This leads an inefficient process of visiting the official sites of each mine in order to get these data. Motivated by these problems, Cross Intermine search tool idea was conceived. The aim is to create a search tool that uses InterMine web services to type a search term once and search many (or all) InterMines at the same time.
-
-## Technology Stack
-<b>Markup Language</b>: HTML, CSS<br />
-<b>Programming Language</b>: Javascript<br />
-<b>Libraries</b>: JQuery, Bootstrap<br /> 
-<b>Testing Tools</b>: Chrome/Mozilla Developer Tools,  Selenium<br />
-<b>Data Visualisation</b>: Chart.js<br />
-
-# Theoretical Explanation
-When the user enters a search term, we make a quick search across selected/all the mines and display the results which will look similar to Google search, with information fetched from the quick search APIs of the respective mines. One caveat to the developer is that while searching through all the mines, it may so happen that some API responds with a status code of 200 while some fail to render results. In this case, we use a user-friendly UI design that would inform the users about the mines that fail to render the results. We also provide a feature that allows the user to search the mines that belong to a certain neighborhood. Other features include adjusting the number of results to be fetched from the front end, filter the results according to the class type of the results, filter results according to the scores/relevances set by the user etc.
 
 ## Features of the search tool
 
@@ -28,3 +27,37 @@ When the user enters a search term, we make a quick search across selected/all t
 7. Implement a feature for graphical analysis of data related to any search term in form of pie charts. For example,  
    a. Analysing which mines have the most correlation with the search query.<br />
    b. Analysing which mines matches the search term and has maximum scores.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Running
+
+This is a complete client-side web application and just requires an active internet connection and a browser to run. Open the `index.html` in your favourite browser and you are good to go.
+
+## Technology Stack
+* **Markup Language** - HTML, CSS
+
+* **Programming Language** - Javascript
+
+* **Libraries** - JQuery, Bootstrap
+
+* **Testing Tools** - Chrome/Mozilla Developer Tools, Selenium Web Automation Tool
+
+* **Data Visualisation** - Chart.js
+
+## Contributing
+
+Please read [CONTRIBUTING.md]() for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Authors
+
+* **Himanshu Kumar** - *Initial work* - [himanshukumar660](https://github.com/himanshukumar660)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## Acknowledgments
+
+* Intermine group
+
