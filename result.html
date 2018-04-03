@@ -18,10 +18,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<script>
-	//The following script display the page only after the mines Lists have loaded completly.
-	  $(document).ajaxComplete(function(){
-	      $("#loader_div").hide();
-		  $("#mainResults").show();
+		//The following script display the page only after the mines Lists have loaded completly.
+		$(document).ajaxComplete(function() {
+			$("#loader_div").hide();
+			$("#mainResults").show();
 		});
 	</script>
 </head>
@@ -38,7 +38,7 @@
 					<img id="sImgHeaderMobile" src="./assets/images/intermine.png" alt="Intermine"/>
 				</a>
 				</div>
-				
+
 				<form method="get" action="result.html" id="sForm">
 					<div class="sInpt">
 						<input id="sBar" name="sQuery" type="text" placeholder="Search Here.." autocomplete="off" />
@@ -46,9 +46,31 @@
 							<i id="sBtnIcon" class="ionicons ion-ios-search-strong"></i>
 						</button>
 					</div>
+
+					<div style="display:block"class="jumbotron text-center mMines">
+						<div id="mMines">
+							<div id="mClose">
+								<i class="ionicons ion-close-circled" ></i>
+							</div>
+							<div id="mNum">
+								<p>Results per mine </p>
+								<input name="mSearchNum" type="number" placeholder="10" autocomplete="off" />
+							</div>
+							<hr style="max-width:800px;margin-top:10px;margin-bottom:10px;" />
+							<div id="mNeighboursList">
+
+							</div>
+							<hr style="max-width:800px;margin-top:10px;margin-bottom:10px;" />
+							<div id="mMineList">
+
+							</div>
+						</div>
+					</div>
+
 				</form>
+
 				<div>
-					<div class="rTool">	
+					<div class="rTool">
 						<div style="display:inline-flex">
 							<p class="rToolBtns rToolBtnActive showAll">All</p>
 							<p class="rToolBtns fMines">Mines</p>
@@ -65,12 +87,12 @@
 		</div>
 	</div>
 	<div style="width: 100%;text-align:  center;margin: 275px auto;position:absolute" id="loader_div">
-				<div class="loader">
-				  <div class="loader__line"></div>
-				  <div class="loader__line"></div>
-				  <div class="loader__line"></div>
-				  <div class="loader__line"></div>
-	</div>
+		<div class="loader">
+			<div class="loader__line"></div>
+			<div class="loader__line"></div>
+			<div class="loader__line"></div>
+			<div class="loader__line"></div>
+		</div>
 	</div>
 	<div id="mainResults" style="display:none">
 		<div class="sResults">
@@ -93,9 +115,9 @@
 	</div>
 	<script>
 		//for tooltips
-		$(document).ready(function(){
-		    $('[data-toggle="tooltip"]').tooltip();
-			$('.rToolBtns.rSaved .badge').text(localStorage.length);   
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+			$('.rToolBtns.rSaved .badge').text(localStorage.length);
 		});
 	</script>
 	<script src="./assets/javascripts/result.js"></script>

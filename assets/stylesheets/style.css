@@ -62,7 +62,7 @@ body {
   border-left:none;
   outline: 0;
   box-shadow: 1px 2px 4px 0 rgba(27,42,53,.25);
-  
+
 }
 #sBtnIcon{
   font-size: 25px;
@@ -156,7 +156,7 @@ table tr {
   width:600px;
   margin: 10px auto;
   border-radius: 3px;
-  border: 1px solid #d3d3d366;
+  border: 1px solid lightgray;
   transform: translateZ(0);
   cursor: pointer;
   transition: 0.1s all ease-in-out;
@@ -178,6 +178,60 @@ table tr {
   width:100%;
   background-color:#fafafa;
   border-bottom: 1px solid #d3d3d366;
+}
+.mMines{
+  position: fixed;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.71) !important;
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  top:0px;
+  bottom:-100px;
+  display: none;
+  font-size: 14px!important;
+}
+#mMines{
+  width: 42%;
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: white;
+  opacity: 1!important;
+  min-width: 30rem;
+  border-radius: 2rem;
+}
+#mClose{
+  width: 100%;
+  text-align: right;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+#mNum{
+  text-align: left;
+  display: inline-flex;
+}
+#mNum p{
+  font-size: 15px;
+  width:80%;
+  padding: 5px;
+  margin-bottom: 0px;
+}
+#mNum input{
+  width: 20%;
+  border:1px solid lightgray;
+  margin-right:10px;
+  border-radius:8px;
+  padding:5px;
+  outline: 0;
+}
+#mNum input::placeholder{
+  color: lightgray;
+}
+
+#mSearchNum{
+  width:30px;
 }
 .star-ratings-css {
   unicode-bidi: bidi-override;
@@ -226,6 +280,8 @@ table tr {
 }
 .rToolBtnActive{
 	border-bottom: 3px solid #609c42;
+  color:black;
+  font-weight: 800;
 }
 .rTool{
 	padding:10px;
@@ -346,7 +402,7 @@ margin-bottom: 10px;
     border-radius: 50%;
     -webkit-animation: loader 0.6s infinite alternate;
     animation: loader 0.6s infinite alternate;
-}	
+}
 
 @media only screen and (max-width: 1200px){
 	.sResultsMine{
