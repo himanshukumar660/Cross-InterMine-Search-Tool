@@ -66,6 +66,10 @@ function addActiveClass(element) {
 		removeActiveClass();
 		addActiveClass($(".showAll"));
 		$(".mMines").hide();
+		//Show the details of the recent searches
+		$("#recentSearch").show();
+		//Hide the details of all the saved results
+		$("#savedSearch").hide();
 	});
 })();
 
