@@ -62,7 +62,7 @@ body {
   border-left:none;
   outline: 0;
   box-shadow: 1px 2px 4px 0 rgba(27,42,53,.25);
-
+  background-color: #f6f8fa;
 }
 #sBtnIcon{
   font-size: 25px;
@@ -157,7 +157,7 @@ table tr {
   margin: 10px auto;
   border-radius: 8px;
   border: 1px solid lightgray;
-  border-top: 1px solid #c0d3eb;
+  border-top: 1px solid #d1d5da;
   transform: translateZ(0);
   cursor: pointer;
   transition: 0.1s all ease-in-out;
@@ -179,9 +179,9 @@ table tr {
   border-top-right-radius: 8px;
   display:inline-block;
   width:100%;
-  background-color: #f1f8ff;
+  background-color: #f6f8fa;
   border-bottom: 1px solid;
-  border-bottom-color: #c0d3eb;
+  border-bottom-color: #d1d5da;
 }
 .mMines{
   position: fixed;
@@ -282,7 +282,7 @@ table tr {
 	margin-bottom:0px!important;
 	margin-left:3px;
 	margin-right:3px;
-  padding: 7px 15px 8px;
+  	padding: 7px 15px 8px;
 }
 .rToolBtnActive{
 	border-bottom: 3px solid #2dbf4d;

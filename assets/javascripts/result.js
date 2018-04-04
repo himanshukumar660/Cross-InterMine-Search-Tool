@@ -74,7 +74,7 @@ function addActiveClass(element) {
 	$("#mClose").click(function() {
 		removeActiveClass();
 		addActiveClass($(".showAll"));
-		$(".mMines").hide();
+		$(".mMines").fadeOut();
 		//Show the details of the recent searches
 		$("#recentSearch").show();
 		//Hide the details of all the saved results
@@ -87,7 +87,7 @@ function addActiveClass(element) {
 	$(".mSearch").click(function() {
 		removeActiveClass();
 		addActiveClass($(this));
-		$(".mMines").show();
+		$(".mMines").fadeIn();
 	});
 })();
 //The following function returns all the parameters from the url
