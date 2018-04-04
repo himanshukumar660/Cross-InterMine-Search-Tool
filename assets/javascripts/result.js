@@ -290,7 +290,11 @@ function addActiveClass(element) {
              </div>';
 
 						 //For more information see https://github.com/intermine/intermine/blob/3ae2631dbe244a029baf9d369510bd87e49ac927/intermine/web/main/src/org/intermine/web/search/KeywordSearchResult.java#L99
-						 var relativeScore=(Math.max(0.1,Math.min(data.results[ech].relevance,1))*100);
+
+						 var ratingBtw1To10 = Math.round(Math.max(0.1,Math.min(data.results[ech].relevance,1))*10);
+						 var ratingBtw1To5=Math.ceil(ratingBtw1To10/2);
+						 var relativeScore = ratingBtw1To5*20;
+
 
 							$(".sResults .sResultsMain").append(
 								'<div class="sResultBox">\
