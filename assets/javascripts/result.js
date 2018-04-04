@@ -262,10 +262,6 @@ function addActiveClass(element) {
 
 					function searchCallback(data) {
 						totalResults += data.results.length;
-						var maxRelevance = Number.MIN_VALUE;
-						for (var ech in data.results) {
-							maxRelevance = Math.max(maxRelevance, data.results[ech].relevance);
-						}
 						for (var ech in data.results) {
 							var all = "";
 							for (var echProp in data.results[ech].fields) {
@@ -293,6 +289,8 @@ function addActiveClass(element) {
               <p style="padding:12px;padding-left:5px;padding-bottom:0px">' + neighboursStr + '</p>\
              </div>';
 
+						 //For more information see https://github.com/intermine/intermine/blob/3ae2631dbe244a029baf9d369510bd87e49ac927/intermine/web/main/src/org/intermine/web/search/KeywordSearchResult.java#L99
+						 var relativeScore=(Math.max(0.1,Math.min(data.results[ech].relevance,1))*100);
 
 							$(".sResults .sResultsMain").append(
 								'<div class="sResultBox">\
@@ -303,7 +301,7 @@ function addActiveClass(element) {
       								</div>\
                       <div class="rStats" style="float:right;display:inline-flex;padding:8px;transform:scale(0.7)">\
                         <div class="star-ratings-css" >\
-                          <div class="star-ratings-css-top" style="width: ' + (data.results[ech].relevance / maxRelevance) * 100 + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
+                          <div class="star-ratings-css-top" style="width: ' + relativeScore + '%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
                           <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>\
                         </div>\
                         <i class="fa fa-download rSavedBtn" data-toggle="tooltip" title="Save"></i></div>\
