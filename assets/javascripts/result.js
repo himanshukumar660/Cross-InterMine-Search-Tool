@@ -1,3 +1,12 @@
+setInterval(
+	function() {
+		if ($('.btn-group.bizmoduleselect').find($('.btn.chbtn.active')).length != 0) {
+			$('#sInptBtn').html('Search')
+		} else {
+			$('#sInptBtn').html('Search All')
+		}
+}, 100);
+
 function removeActiveClass() {
 	$(".rToolBtns.rToolBtnActive").each(function(index) {
 		$(this).removeClass("rToolBtnActive");
@@ -62,7 +71,7 @@ function addActiveClass(element) {
 })();
 //function to close the modify searchbox
 (function closeModifySearchBox() {
-	$("#mClose").click(function(){
+	$("#mClose").click(function() {
 		removeActiveClass();
 		addActiveClass($(".showAll"));
 		$(".mMines").hide();
@@ -89,6 +98,7 @@ function addActiveClass(element) {
 	var parameters = query.split("&");
 	var queryType = new Set();
 	var queries = {};
+	var numToBeFetched = 0;
 	var regEndPnt = "https://registry.intermine.org/service/instances";
 
 	//We use set to be safe from duplicate entries of the mines
@@ -98,7 +108,10 @@ function addActiveClass(element) {
 
 	for (each in parameters) {
 		var tempParameter = parameters[each].split("=");
-		if (tempParameter[0] == "mines" || tempParameter[0] == "neighbours") {
+		console.log(tempParameter);
+		if (tempParameter[0] == "mSearchNum") {
+			numToBeFetched = tempParameter[1];
+		} else if (tempParameter[0] == "mines" || tempParameter[0] == "neighbours") {
 			queries[tempParameter[0]].add(tempParameter[1]);
 		} else if (tempParameter[0] == "sQuery") {
 			queries["sQuery"].push(tempParameter[1]);
@@ -109,12 +122,21 @@ function addActiveClass(element) {
 			if (data.statusCode == 200) {
 				var mineInfo = {};
 				var mineList = {};
-
+				var neighboursSet = new Set();
 				//Now we add those mines whose neighbours are in the neighbours set, also we make a dictinary of {mineName:[Url,logo,neighbours]} to access later
 				for (each in data.instances) {
 
+					var backgroundColor = Object.is(data.instances[each].colors, undefined) ? "#595455" :
+						Object.is(data.instances[each].colors.header, undefined) ? "#595455" :
+						Object.is(data.instances[each].colors.header.main, undefined) ? "#595455" : data.instances[each].colors.header.main;
+
+					var textColor = Object.is(data.instances[each].colors, undefined) ? "#fff" :
+						Object.is(data.instances[each].colors.header, undefined) ? "#fff" :
+						Object.is(data.instances[each].colors.header.text, undefined) ? "#fff" : data.instances[each].colors.header.text;
+
 					for (everyN in data.instances[each].neighbours) {
 						//if the neighbours of the mine is present in the query["neighbours"], we add that mine to search result
+						neighboursSet.add(data.instances[each].neighbours[everyN].replace(" ", ""));
 						if (queries["neighbours"].has(data.instances[each].neighbours[everyN])) {
 							queries["mines"].add(data.instances[each].name);
 						}
@@ -128,6 +150,8 @@ function addActiveClass(element) {
 					mineInfo[data.instances[each].name] = {};
 					mineInfo[data.instances[each].name] = {
 						name: data.instances[each].name,
+						backgroundColor: backgroundColor,
+						textColor: textColor,
 						url: data.instances[each].url,
 						logo_url: data.instances[each].images,
 						neighbours: data.instances[each].neighbours,
@@ -146,6 +170,74 @@ function addActiveClass(element) {
 						neighbours: data.instances[each].neighbours
 					};
 				}
+				console.log(neighboursSet);
+				//Add the different neighbours list in the front end
+				var neighbours = Array.from(neighboursSet);
+				for (item in neighbours) {
+					$("#mNeighboursList").append(
+						'<div id="mInfo" class="choiceLst">\
+							<div data-toggle="buttons" class="btn-group bizmoduleselect">\
+								<label class="btn chbtn">\
+									<div class="bizcontent">\
+										<button id="choices">\
+											<input type="checkbox" name="neighbours" value="' +
+						neighbours[item] + '"/>\
+											' + neighbours[item] + '\
+										</button>\
+									</div>\
+								</label>\
+							</div>\
+						</div>'
+					);
+					var css = document.createElement("style");
+					css.innerHTML = "." + neighbours[item] + "{" + "background-color:#bed73b!important;\
+				    color: black!important;\
+				    font-weight: 500;\
+					border:none!important;\
+					box-shadow:0 0.3em 0.5em -0.2em rgba(100,100,100,1),\
+					 0 1em 2em -0.75em rgba(100,100,100,0.75),\
+					 0 0.31em 0.5em -0.5em rgba(100,100,100,0.5),\
+					 0 0.3em 0.5em -0.2em rgba(100,100,100,0.2);\
+					}";
+					$("head").append(css);
+				};
+
+				for (each in mineList) {
+					$("#mMineList").append(
+						'<div id="sInfo" class="choiceLst">\
+								<div data-toggle="buttons" class="btn-group bizmoduleselect">\
+									<label class="btn chbtn">\
+										<div class="bizcontent">\
+											<button id="choices">\
+												<input type="checkbox" name="mines" value="' +
+						each + '"/>\
+												' + each + '\
+											</button>\
+										</div>\
+									</label>\
+								</div>\
+							</div>'
+					);
+					var css = document.createElement("style");
+					css.innerHTML = "." + each + "{" + "background-color:" + mineInfo[each].backgroundColor + "!important;\
+					    color: " + mineInfo[each].textColor + "!important;\
+					    font-weight: 500;\
+						border:none!important;\
+						box-shadow:0 0.3em 0.5em -0.2em rgba(100,100,100,1),\
+						 0 1em 2em -0.75em rgba(100,100,100,0.75),\
+						 0 0.31em 0.5em -0.5em rgba(100,100,100,0.5),\
+						 0 0.3em 0.5em -0.2em rgba(100,100,100,0.2);\
+						}";
+					$("head").append(css);
+				}
+
+				var s = document.createElement("script");
+				s.innerHTML = '\
+					$(".btn.chbtn").click(function() {\
+						var mineName = $(this).find($(".bizcontent button#choices")).text();\
+						$(this).find($(".bizcontent button#choices")).toggleClass(mineName)\
+					});'
+				$("head").append(s);
 
 				//The following selects all the mines if the user has not selected any mine
 				if (queries["mines"].size == 0) {
@@ -153,8 +245,10 @@ function addActiveClass(element) {
 						queries["mines"].add(data.instances[each].name);
 					}
 				}
-
-				var apiSearchEndPoint = "/service/search?q=" + queries["sQuery"] + "&size=10";
+				//if the number of result to be fetched is not given then set it to a default value
+				numToBeFetched = (numToBeFetched=="")?"10":numToBeFetched;
+				console.log(numToBeFetched);
+				var apiSearchEndPoint = "/service/search?q=" + queries["sQuery"] + "&size=" + numToBeFetched;
 				var failAPICalls = 0,
 					totalResults = 0;
 				$.each(Array.from(queries["mines"]), function(index, item) {

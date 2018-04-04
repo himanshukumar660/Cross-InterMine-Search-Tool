@@ -155,8 +155,9 @@ table tr {
   max-width: 100%;
   width:600px;
   margin: 10px auto;
-  border-radius: 3px;
+  border-radius: 8px;
   border: 1px solid lightgray;
+  border-top: 1px solid #c0d3eb;
   transform: translateZ(0);
   cursor: pointer;
   transition: 0.1s all ease-in-out;
@@ -166,21 +167,25 @@ table tr {
 	font-weight:300;
 	margin-left:5px;
 	margin-right:5px;
-	background-color:#609c42;
+  background-color: rgba(27,31,35,0.08);
+  color: black;
+  font-weight: 600;
 }
 /*#sResultBox:hover{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }*/
 .mineNameHeader{
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   display:inline-block;
   width:100%;
-  background-color:#fafafa;
-  border-bottom: 1px solid #d3d3d366;
+  background-color: #f1f8ff;
+  border-bottom: 1px solid;
+  border-bottom-color: #c0d3eb;
 }
 .mMines{
   position: fixed;
+  overflow: scroll;
   z-index: 2000;
   background-color: rgba(0, 0, 0, 0.71) !important;
   width: 100%;
@@ -192,9 +197,9 @@ table tr {
   font-size: 14px!important;
 }
 #mMines{
-  width: 42%;
-  max-width: 600px;
-  margin: 100px auto;
+  width: 60%;
+  max-width: 700px;
+  margin: 25px auto;
   padding: 20px;
   background-color: white;
   opacity: 1!important;
@@ -245,7 +250,7 @@ table tr {
   text-shadow: 0px 1px 0 #a2a2a2;
 }
 .star-ratings-css-top {
-    color: #42b72a;
+    color: #2dbf4d;
     padding: 0;
     position: absolute;
     z-index: 1;
@@ -277,9 +282,10 @@ table tr {
 	margin-bottom:0px!important;
 	margin-left:3px;
 	margin-right:3px;
+  padding: 7px 15px 8px;
 }
 .rToolBtnActive{
-	border-bottom: 3px solid #609c42;
+	border-bottom: 3px solid #2dbf4d;
   color:black;
   font-weight: 800;
 }
@@ -319,10 +325,11 @@ table tr {
   position: fixed;
   width:100%;
   padding-top: 20px;
-  background-color: #fafafa;
   z-index: 100;
   padding-bottom:0px;
   margin-bottom:0px;
+  background-color: #fafbfc;
+  border-bottom: 1px solid #e1e4e8;
 }
 .rType{
   padding: 10px;
@@ -338,6 +345,7 @@ table tr {
   font-size:13px;
   display: none;
   background-color: white;
+  border-radius: 8px;
 }
 .mineInfoHeader{
   display: flex;
@@ -398,7 +406,7 @@ margin-bottom: 10px;
     height: 1em;
     width: 1em;
     display: inline-block;
-    background-color: #bed73b;
+    background-color: #2dbf4d;
     border-radius: 50%;
     -webkit-animation: loader 0.6s infinite alternate;
     animation: loader 0.6s infinite alternate;
@@ -412,7 +420,11 @@ margin-bottom: 10px;
 @media only screen and (max-width: 500px) {
     .jumbotron.rHeader {
     	background-color:white;
-		position:relative;
+		  position:relative;
+      border-bottom: 0px;
+    }
+    .mMines{
+      margin-bottom: 100px;
     }
 	.sBox{
         width: 170%;
@@ -437,8 +449,8 @@ margin-bottom: 10px;
       font-size: 25px;
     }
     #sInptBtn{
-	    font-size: 20px;
 	    line-height: 2;
+      font-size: 15px;
     }
     #sBar, #sBtn{
       border: 0.5px solid lightgray;
