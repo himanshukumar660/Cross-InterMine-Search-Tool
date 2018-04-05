@@ -12,7 +12,46 @@ function removeActiveClass() {
 		$(this).removeClass("rToolBtnActive");
 	});
 }
+(function filterScore(){
+	//Show only those reuslts that are four stars and up
+	var stars;
+	function filter(fBtn, rating){
+		fBtn.closest($(".dropdown-menu")).find($(".fBtn")).each(function(index){
+			$(this).find($(".fa.fa-chevron-circle-right")).removeClass("fBtnActive");
+		});
+		fBtn.find($(".fa.fa-chevron-circle-right")).addClass("fBtnActive");
 
+		$(".sResultsMain").find($(".sResultBox")).each(function(){
+			stars = parseInt($(this).find($(".star-ratings-css-top")).css("width"))/20;
+			if(stars<rating){
+				$(this).fadeOut();
+			}
+			if(stars>=rating){
+				$(this).fadeIn();
+			}
+		})
+	};
+
+	$("#fourUpRate").click(function(){
+		filter($(this),4);
+	});
+
+	//Show only those reuslts that are three stars and up
+	$("#threeUpRate").click(function(){
+		filter($(this),3);
+	});
+
+	//Show only those reuslts that are two stars and up
+	$("#twoUpRate").click(function(){
+		filter($(this),2);
+	});
+
+	//Show only those reuslts that are one stars and up
+	$("#oneUpRate").click(function(){
+		filter($(this),1);
+	});
+
+})();
 function addActiveClass(element) {
 	element.addClass("rToolBtnActive");
 }

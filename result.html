@@ -50,7 +50,7 @@
 					<div style="display:none" class="jumbotron text-center mMines">
 						<div id="mMines">
 							<div id="mClose">
-								<i class="ionicons ion-close-circled" ></i>
+								<i class="ionicons ion-close-circled"></i>
 							</div>
 							<div id="mNum">
 								<p>Results per mine </p>
@@ -79,7 +79,6 @@
 						<div style="display:inline-flex">
 							<p class="rToolBtns rToolBtnActive showAll">All</p>
 							<p class="rToolBtns fMines">Mines</p>
-							<p class="rToolBtns fScores">Scores</p>
 							<p class="rToolBtns fClass">Class</p>
 						</div>
 						<div style="display:inline-flex">
@@ -103,8 +102,82 @@
 		<div class="sResults">
 			<div id="recentSearch">
 				<!-- This following three lines belongs to the searches that the user has made-->
-				<div id="numberResults"></div>
 				<div id="failAPIMines">Coudn't load results from </div>
+				<div style="display:inline-flex;width:100%;justify-content: space-between;">
+					<div id="numberResults"></div>
+					<div>
+						<div class="dropdown">
+							<button id="fScore" type="button" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
+								<i class="ionicons ion-funnel" title="Filter"></i>
+							</button>
+							<ul role="menu" aria-labelledby="menu1" class="dropdown-menu">
+								<li role="presentation">
+									<button tabindex="-1" id="fourUpRate" class="fBtn">
+										<i class="fa fa-chevron-circle-right" id="fInd"></i>
+										<div class="star-ratings-css">
+											<div class="star-ratings-css-top" style="width: 80%">
+												<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+											</div>
+											<div class="star-ratings-css-bottom">
+												<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+											</div>
+										</div>
+										<p>
+											& Up
+										</p>
+									</button>
+									<li role="presentation" class="divider"></li>
+									<button tabindex="-1" id="threeUpRate" class="fBtn">
+										<i class="fa fa-chevron-circle-right" id="fInd"></i>
+										<div class="star-ratings-css">
+											<div class="star-ratings-css-top" style="width: 60%">
+												<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+											</div>
+											<div class="star-ratings-css-bottom">
+												<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+											</div>
+										</div>
+										<p>
+											 & Up
+										</p>
+								 </button>
+									<li role="presentation" class="divider"></li>
+									<button tabindex="-1" id="twoUpRate" class="fBtn">
+										<i class="fa fa-chevron-circle-right" id="fInd"></i>
+										<div class="star-ratings-css">
+										 <div class="star-ratings-css-top" style="width: 40%">
+											 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+										 </div>
+										 <div class="star-ratings-css-bottom">
+											 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+										 </div>
+									 </div>
+									 <p>
+											& Up
+									 </p>
+								 </button>
+									<li role="presentation" class="divider"></li>
+									<button tabindex="-1" id="oneUpRate" class="fBtn">
+										<i class="fa fa-chevron-circle-right" id="fInd"></i>
+										<div class="star-ratings-css">
+										 <div class="star-ratings-css-top" style="width: 20%">
+											 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+										 </div>
+										 <div class="star-ratings-css-bottom">
+											 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+										 </div>
+										</div>
+										<p>
+											& Up
+										</p>
+								</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
 				<div class="sResultsMain"></div>
 			</div>
 			<div id="savedSearch" style="display:none">
