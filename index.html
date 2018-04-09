@@ -21,7 +21,7 @@
 	<script>
 	//The following script display the page only after the mines Lists have loaded completly.
 	  $(document).ajaxComplete(function(){
-	      $("#loader_div").hide();
+	    $(".loader").hide();
 		  $("#mineListDiv").show();
 		});
 	</script>
@@ -40,14 +40,12 @@
 				<button id="sInptBtn" type="submit">Search All</button>
 			</div>
 			<div>
-				<div style="display:block;margin:100px auto" id="loader_div">
 					<div class="loader">
-					  <div class="loader__line"></div>
-					  <div class="loader__line"></div>
-					  <div class="loader__line"></div>
-					  <div class="loader__line"></div>
+					  <div class="line"></div>
+					  <div class="line"></div>
+					  <div class="line"></div>
+					  <div class="line"></div>
 					</div>
-				</div>
 				<div style="display:none" id="mineListDiv">
 					<div class="sInfoNeighbours">
 
