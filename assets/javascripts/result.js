@@ -16,6 +16,14 @@ function removeActiveClass() {
 	//Show only those reuslts that are four stars and up
 	var stars;
 	function filter(fBtn, rating){
+		//To improve the user experience add the loader for showig the users that it has been filtered
+		$(".sResultsMain").hide();
+		$("#loader_divFilter").show();
+		setTimeout(function(){
+		 	$(".sResultsMain").show();
+			$("#loader_divFilter").hide();
+		}, 700);
+
 		fBtn.closest($(".dropdown-menu")).find($(".fBtn")).each(function(index){
 			$(this).find($(".fa.fa-chevron-circle-right")).removeClass("fBtnActive");
 		});
@@ -367,8 +375,8 @@ function addActiveClass(element) {
 							);
 						}
 
-						$("#numberResults").css({
-							"display": "block"
+						$("#rLog").css({
+							"opacity": "1"
 						});
 						//var numOfResultsPrev = parseInt($(".sResults").find($("#numberResults")).text());
 						$("#numberResults").text("Showing " + totalResults + " results");

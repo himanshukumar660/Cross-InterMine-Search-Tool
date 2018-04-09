@@ -362,26 +362,39 @@ table tr {
   border-radius: 10px;
 }
 .sResults{
-  margin:20px;
+  margin: 20px;
+  margin-top: 0px;
   margin-left:143px;
   max-width:600px;
   float:left;
   line-height:20px;
   width:100%;
 }
+#rLog{
+  opacity: 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display:inline-flex;
+  width:100%;
+  justify-content: space-between;
+}
+
 #numberResults, #failAPIMines, #numberResultsSaved, #rLog{
 color:#808080;
 font-weight:500;
 font-size:12px;
-margin-bottom: 10px;
 }
 #numberResults{
   padding-top: 5px;
 }
+#numberResultsSaved{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 #failAPIMines{
   display:none;
-  margin-top:10px;
-  margin-bottom: 10px;
+  margin-top:5px;
+  margin-bottom: 5px;
 }
 .rSavedBtn, .rDeleteBtn{
 	color: lightgray;
@@ -412,7 +425,6 @@ margin-bottom: 10px;
   width: 40%;
 }
 #fScore{
-  margin-bottom: 10px!important;
   color: #fff;
   font-weight: 500;
   background-color: #28a745;
@@ -421,6 +433,7 @@ margin-bottom: 10px;
   line-height: 20px;
   border: 1px solid white;
   border-radius: 8px;
+  font-size: 13px;
 }
 #fInd{
   font-size: 15px;
@@ -450,7 +463,18 @@ margin-bottom: 10px;
   width:100%;
   margin: 100px auto;
 }
-
+#loader_divFilter{
+width: 100%;
+text-align:center;
+margin:125px auto;
+display:none;
+}
+#loader_div{
+width: 100%;
+text-align:  center;
+margin: 225px auto;
+position:absolute;
+}
 .line {
   animation: expand 1s ease-in-out infinite;
   border-radius: 10px;
@@ -563,11 +587,11 @@ margin-bottom: 10px;
       display: none!important;
     }
     .sResults{
-      margin-left: 20px;
-	  margin-top:0px;
+      margin-left:20px;
+	    margin-top:0px;
     }
 	#mainResults{
-		margin-top:20px;
+		margin-top:0px;
 	}
 	#sBar, #sBtn{
 		border: 2px solid rgba(27,42,53,.10);

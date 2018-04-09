@@ -90,7 +90,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="width: 100%;text-align:  center;margin: 225px auto;position:absolute" id="loader_div">
+	<div id="loader_div">
 		<div class="loader">
 			<div class="line"></div>
 			<div class="line"></div>
@@ -102,7 +102,7 @@
 		<div class="sResults">
 			<div id="recentSearch">
 				<!-- This following three lines belongs to the searches that the user has made-->
-				<div style="display:inline-flex;width:100%;justify-content: space-between;">
+				<div id="rLog">
 					<div id="numberResults"></div>
 					<div>
 						<div class="dropdown">
@@ -170,7 +170,6 @@
 													<span style="color: #d1d5da;">★</span>
 												</div>
 									 </div>
-
 										<p>
 											& Up
 										</p>
@@ -179,12 +178,21 @@
 							</ul>
 						</div>
 					</div>
-
 				</div>
-				<div id="failAPIMines">Coudn't load results from </div>
-				<hr />
+				<div id="failAPIMines">
+					Coudn't load results from
+				</div>
+				<div id="loader_divFilter">
+					<div class="loader">
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+					</div>
+				</div>
 				<div class="sResultsMain"></div>
 			</div>
+
 			<div id="savedSearch" style="display:none">
 				<!-- This following three lines belongs to the searches that the user has saved-->
 				<div id="numberResultsSaved"></div>
