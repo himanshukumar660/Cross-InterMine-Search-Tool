@@ -20,16 +20,20 @@ function removeActiveClass() {
 			$(this).find($(".fa.fa-chevron-circle-right")).removeClass("fBtnActive");
 		});
 		fBtn.find($(".fa.fa-chevron-circle-right")).addClass("fBtnActive");
-
+		var counterNotShown=0,counterShown=0;
 		$(".sResultsMain").find($(".sResultBox")).each(function(){
 			stars = parseInt($(this).find($(".star-ratings-css-top")).css("width"))/20;
 			if(stars<rating){
 				$(this).fadeOut();
+				counterNotShown++;
 			}
 			if(stars>=rating){
 				$(this).fadeIn();
+				counterShown++;
 			}
-		})
+		});
+		console.log("Showing "+counterShown+" results");
+		fBtn.closest($("#recentSearch")).find($("#numberResults")).text("Showing "+counterShown+" results");
 	};
 
 	$("#fourUpRate").click(function(){
