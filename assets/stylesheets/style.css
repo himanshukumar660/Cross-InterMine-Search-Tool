@@ -275,7 +275,6 @@ table tr {
 	font-size:13px!important;
 	text-decoration:none;
 	cursor:pointer;
-	font-weight:500!important;
 	text-align:center;
 	padding-left:10px;
 	padding-right:10px;
@@ -283,12 +282,12 @@ table tr {
 	margin-bottom:0px!important;
 	margin-left:3px;
 	margin-right:3px;
-  	padding: 7px 15px 8px;
+  padding: 7px 15px 8px;
 }
 .rToolBtnActive{
 	border-bottom: 3px solid #2dbf4d;
   color:black;
-  font-weight: 800;
+	font-weight:500!important;
 }
 .rTool{
 	padding:10px;
@@ -370,11 +369,14 @@ table tr {
   line-height:20px;
   width:100%;
 }
-#numberResults, #failAPIMines, #numberResultsSaved{
+#numberResults, #failAPIMines, #numberResultsSaved, #rLog{
 color:#808080;
 font-weight:500;
 font-size:12px;
 margin-bottom: 10px;
+}
+#numberResults{
+  padding-top: 10px;
 }
 #failAPIMines{
   display:none;
@@ -410,9 +412,15 @@ margin-bottom: 10px;
   width: 40%;
 }
 #fScore{
-  background-color: unset;
-  border: none;
   margin-bottom: 10px!important;
+  color: #fff;
+  font-weight: 500;
+  background-color: #28a745;
+  background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+  padding: 3px 10px;
+  line-height: 20px;
+  border: 1px solid white;
+  border-radius: 8px;
 }
 #fInd{
   font-size: 15px;
@@ -425,17 +433,17 @@ margin-bottom: 10px;
   color:black!important;
 }
 .dropdown-menu{
-  z-index: 3000;
+  z-index: 1;
   font-size: 13px;
   min-width: 155px;
-  left: -450%;
+  left: -113%;
   box-shadow: 0px 10px 40px 4px lightgrey;
 }
 .dropdown-menu .divider{
   margin: 2px 0;
 }
 .ionicons.ion-funnel{
-  color: gray;
+  color: white;
 }
 
 .loader {
@@ -559,7 +567,7 @@ margin-bottom: 10px;
 	  margin-top:0px;
     }
 	#mainResults{
-		margin-top:10px;
+		margin-top:20px;
 	}
 	#sBar, #sBtn{
 		border: 2px solid rgba(27,42,53,.10);
