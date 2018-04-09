@@ -15,18 +15,30 @@ function removeActiveClass() {
 (function filterScore(){
 	//Show only those reuslts that are four stars and up
 	var stars;
-	function filter(fBtn, rating){
+
+	function rmActiveAttr(fBtn){
+		//remove active attributes from all the button
+		fBtn.closest($(".dropdown-menu")).find($(".fBtn")).each(function(index){
+			$(this).find($(".fa.fa-chevron-circle-right")).removeClass("fBtnActive");
+		});
+	};
+	function preLoader(){
 		//To improve the user experience add the loader for showig the users that it has been filtered
 		$(".sResultsMain").hide();
 		$("#loader_divFilter").show();
 		setTimeout(function(){
 		 	$(".sResultsMain").show();
 			$("#loader_divFilter").hide();
-		}, 700);
-
-		fBtn.closest($(".dropdown-menu")).find($(".fBtn")).each(function(index){
-			$(this).find($(".fa.fa-chevron-circle-right")).removeClass("fBtnActive");
-		});
+		}, 500);
+	};
+	function filter(fBtn, rating){
+		preLoader();
+		//if filter applied, then remove the funnel icon and add the double tick icon
+		fBtn.closest($(".dropdown")).find($("#fScore .ionicons.ion-funnel")).remove();
+		if(fBtn.closest($(".dropdown")).find($("#fScore .ionicons.ion-android-done-all")).length==0){
+			fBtn.closest($(".dropdown")).find($("#fScore")).append("<i class='ionicons ion-android-done-all'></i>");
+		}
+		rmActiveAttr(fBtn);
 		fBtn.find($(".fa.fa-chevron-circle-right")).addClass("fBtnActive");
 		var counterNotShown=0,counterShown=0;
 		$(".sResultsMain").find($(".sResultBox")).each(function(){
@@ -40,8 +52,25 @@ function removeActiveClass() {
 				counterShown++;
 			}
 		});
-		console.log("Showing "+counterShown+" results");
 		fBtn.closest($("#recentSearch")).find($("#numberResults")).text("Showing "+counterShown+" results");
+	};
+
+	function rmFilter(fBtn){
+		//To improve the user experience add the loader for showig the users that it has been filtered
+		preLoader();
+		//if filter is not applied, then remove the double tick icon and add the double tick icon
+		fBtn.closest($(".dropdown")).find($("#fScore .ionicons.ion-android-done-all")).remove();
+		if(fBtn.closest($(".dropdown")).find($("#fScore .ionicons.ion-funnel")).length==0){
+			fBtn.closest($(".dropdown")).find($("#fScore")).append("<i class='ionicons ion-funnel'></i>");
+		}
+		rmActiveAttr(fBtn);
+		//display all the results
+		$(".sResultsMain").find($(".sResultBox")).each(function(){
+			if($(this).css("display")=="none")
+				$(this).fadeIn();
+		});
+		var totalResults = $(".sResultsMain").find($(".sResultBox")).length;
+		fBtn.closest($("#recentSearch")).find($("#numberResults")).text("Showing "+totalResults+" results");
 	};
 
 	$("#fourUpRate").click(function(){
@@ -61,6 +90,11 @@ function removeActiveClass() {
 	//Show only those reuslts that are one stars and up
 	$("#oneUpRate").click(function(){
 		filter($(this),1);
+	});
+
+	//Show only those reuslts that are one stars and up
+	$("#removeFilter").click(function(){
+		rmFilter($(this));
 	});
 
 })();

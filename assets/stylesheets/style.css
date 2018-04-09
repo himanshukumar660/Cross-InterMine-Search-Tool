@@ -415,6 +415,26 @@ font-size:12px;
  padding-bottom: 5px;
  font-size: 10px;
  display: inline-flex;
+ outline: 0;
+}
+#removeFilter{
+  display: inline-flex;
+  background-color: unset;
+  border: none;
+  text-align: center;
+  width: 100%;
+}
+#removeFilter p{
+  margin-bottom: 0px;
+  padding:5px;
+  font-size: 15px;
+  font-weight: 500;
+  color:black;
+}
+#removeFilterBtn{
+  padding: 8px;
+  color: red;
+  font-weight: 800;
 }
 #fourUpRate p, #threeUpRate p, #twoUpRate p, #oneUpRate p{
   font-size: 13px;
