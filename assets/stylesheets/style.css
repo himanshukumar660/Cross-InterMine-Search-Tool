@@ -417,12 +417,16 @@ font-size:12px;
  display: inline-flex;
  outline: 0;
 }
+#rmFilterDiv{
+  display: hidden;
+}
 #removeFilter{
   display: inline-flex;
   background-color: unset;
   border: none;
   text-align: center;
   width: 100%;
+
 }
 #removeFilter p{
   margin-bottom: 0px;

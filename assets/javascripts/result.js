@@ -22,6 +22,7 @@ function removeActiveClass() {
 			$(this).find($(".fa.fa-chevron-circle-right")).removeClass("fBtnActive");
 		});
 	};
+
 	function preLoader(){
 		//To improve the user experience add the loader for showig the users that it has been filtered
 		$(".sResultsMain").hide();
@@ -31,6 +32,7 @@ function removeActiveClass() {
 			$("#loader_divFilter").hide();
 		}, 500);
 	};
+
 	function filter(fBtn, rating){
 		preLoader();
 		//if filter applied, then remove the funnel icon and add the double tick icon
@@ -72,6 +74,21 @@ function removeActiveClass() {
 		var totalResults = $(".sResultsMain").find($(".sResultBox")).length;
 		fBtn.closest($("#recentSearch")).find($("#numberResults")).text("Showing "+totalResults+" results");
 	};
+
+	function hideRmFilter(){
+		console.log($(".dropdown-menu").find($(".fBtnActive")).length);
+		if($(".dropdown-menu").find($(".fBtnActive")).length!=0)
+		{
+			$(".dropdown-menu").find("#rmFilterDiv").show();
+		}
+		else{
+			$(".dropdown-menu").find("#rmFilterDiv").hide();
+		}
+	};
+	hideRmFilter();
+	$(document).click(function(){
+		hideRmFilter();
+	});
 
 	$("#fourUpRate").click(function(){
 		filter($(this),4);
